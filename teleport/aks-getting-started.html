@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Getting Started with AKS &amp; Project Teleport | Azure Container Registry</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/acr/assets/css/0.styles.141b3060.css" as="style"><link rel="preload" href="/acr/assets/js/app.09ed2a84.js" as="script"><link rel="preload" href="/acr/assets/js/2.f86faad7.js" as="script"><link rel="preload" href="/acr/assets/js/49.7f6d7795.js" as="script"><link rel="prefetch" href="/acr/assets/js/10.57bcffaa.js"><link rel="prefetch" href="/acr/assets/js/11.d70faeba.js"><link rel="prefetch" href="/acr/assets/js/12.21fd10c0.js"><link rel="prefetch" href="/acr/assets/js/13.7c48beb6.js"><link rel="prefetch" href="/acr/assets/js/14.2df334c1.js"><link rel="prefetch" href="/acr/assets/js/15.d2d3bd05.js"><link rel="prefetch" href="/acr/assets/js/16.83754447.js"><link rel="prefetch" href="/acr/assets/js/17.532f23a0.js"><link rel="prefetch" href="/acr/assets/js/18.a76e8f7c.js"><link rel="prefetch" href="/acr/assets/js/19.5768f810.js"><link rel="prefetch" href="/acr/assets/js/20.ab152cd6.js"><link rel="prefetch" href="/acr/assets/js/21.39ae3273.js"><link rel="prefetch" href="/acr/assets/js/22.e112ad54.js"><link rel="prefetch" href="/acr/assets/js/23.c753305d.js"><link rel="prefetch" href="/acr/assets/js/24.6a571862.js"><link rel="prefetch" href="/acr/assets/js/25.e3748106.js"><link rel="prefetch" href="/acr/assets/js/26.3c2e1ed6.js"><link rel="prefetch" href="/acr/assets/js/27.69f0c3fe.js"><link rel="prefetch" href="/acr/assets/js/28.a9c9745b.js"><link rel="prefetch" href="/acr/assets/js/29.0580cb25.js"><link rel="prefetch" href="/acr/assets/js/3.e0486cc8.js"><link rel="prefetch" href="/acr/assets/js/30.789339f0.js"><link rel="prefetch" href="/acr/assets/js/31.ac7460c2.js"><link rel="prefetch" href="/acr/assets/js/32.cccb17c6.js"><link rel="prefetch" href="/acr/assets/js/33.c276ba67.js"><link rel="prefetch" href="/acr/assets/js/34.278f0e8f.js"><link rel="prefetch" href="/acr/assets/js/35.8a7cb580.js"><link rel="prefetch" href="/acr/assets/js/36.3eb07688.js"><link rel="prefetch" href="/acr/assets/js/37.5d7ff385.js"><link rel="prefetch" href="/acr/assets/js/38.35e36b4f.js"><link rel="prefetch" href="/acr/assets/js/39.f8764d22.js"><link rel="prefetch" href="/acr/assets/js/4.8afd7a30.js"><link rel="prefetch" href="/acr/assets/js/40.58758a47.js"><link rel="prefetch" href="/acr/assets/js/41.c5cdf429.js"><link rel="prefetch" href="/acr/assets/js/42.132a6a36.js"><link rel="prefetch" href="/acr/assets/js/43.2348c5ac.js"><link rel="prefetch" href="/acr/assets/js/44.b256bf82.js"><link rel="prefetch" href="/acr/assets/js/45.91177548.js"><link rel="prefetch" href="/acr/assets/js/46.ef372030.js"><link rel="prefetch" href="/acr/assets/js/47.2df2bbed.js"><link rel="prefetch" href="/acr/assets/js/48.2501e4d2.js"><link rel="prefetch" href="/acr/assets/js/5.2f834d0b.js"><link rel="prefetch" href="/acr/assets/js/6.d3786eb9.js"><link rel="prefetch" href="/acr/assets/js/7.d373db68.js"><link rel="prefetch" href="/acr/assets/js/8.830cfc3e.js"><link rel="prefetch" href="/acr/assets/js/9.c8fd7778.js">
+    <link rel="stylesheet" href="/acr/assets/css/0.styles.141b3060.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/acr/" class="home-link router-link-active"><img src="/acr/files/acr.svg" alt="Azure Container Registry" class="logo"> <span class="site-name can-hide">Azure Container Registry</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/azure/acr" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Star this Repo
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"> <a href="https://github.com/azure/acr" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Star this Repo
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/acr/" aria-current="page" class="sidebar-link">Overview</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/acr/#overview" class="sidebar-link">Overview</a></li><li class="sidebar-sub-header"><a href="/acr/#blog-posts" class="sidebar-link">Blog posts</a></li><li class="sidebar-sub-header"><a href="/acr/#links" class="sidebar-link">Links</a></li></ul></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Teleport</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Tasks</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Authentication</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Integration</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="getting-started-with-aks-project-teleport"><a href="#getting-started-with-aks-project-teleport" class="header-anchor">#</a> Getting Started with AKS &amp; Project Teleport</h1> <blockquote><p>Note: this is a first draft, to get folks started.</p></blockquote> <p>To get a sense of the performance benefits of Project Teleport two deployments will be made.</p> <p>Project Teleport is node specific. If an image is pulled to a node, with teleport enabled, the expanded layers are mounted.
+If a second copy of the same image is pulled to the same node, even if pulled from a non-teleport expanded repository, the node will identify the image is the same and mount the layers from the previously pulled and teleport expanded image.</p> <p>To test the same image with and without Project Teleport enabled, two additional nodepools will be created. The additional nodepools will enable clearing any cached images and layers by scaling the nodepool to zero, then back to one.</p> <ul><li><code>nodepool1</code> - The system nodepool. No workloads will be scheduled here.</li> <li><code>teleporter</code> - A teleport enabled nodepool, with a single node</li> <li><code>shuttle</code> - The standard method of transport of container images, with a single node.</li></ul> <h2 id="aks-project-teleport-preview-2-0-limitations"><a href="#aks-project-teleport-preview-2-0-limitations" class="header-anchor">#</a> AKS &amp; Project Teleport Preview 2.0 Limitations</h2> <ul><li>AKS must be configured with service principals. While AKS and ACR support managed identities, the expanded mounts do not yet support managed identities. This should be deployed shortly.</li> <li>k8s version 1.19.7 or later is required, as Project Teleport depends on containerd.</li> <li>ACR and AKS must be in the same regions. This is less of a limitation, rather a design constraint. It's always a best practice to have the content required for deployment to be within the same region. Project Teleport depends on this standard to mount layers within an Azure network, regional boundary.</li> <li>To manage storage costs, geo-replication is not yet supported. The ACR must be created in the same region as the AKS cluster. Future versions will support geo-replication.</li> <li>VNet support is not yet enabled.</li></ul> <h2 id="set-environment-variables"><a href="#set-environment-variables" class="header-anchor">#</a> Set environment variables</h2> <p>Configure variables unique to your environment. Note the ACR and AKS instances must both be in one of the <a href="/acr/teleport/#preview-constraints">teleport supported regions</a>.</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>AKS=myaks
+AKS_RG=${AKS}-rg
+RG_LOCATION=westus2
+K8S_VERSION=1.19.7
+ACR=myacr
+ACR_URL=${ACR}.azurecr.io
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="create-an-aks-cluster"><a href="#create-an-aks-cluster" class="header-anchor">#</a> Create an AKS Cluster</h2> <p>At the current moment, Teleport does not yet support managed identity access to teleport expanded layers. Until managed identities are supported, configure the cluster with a service principal.</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>SP_PWD=$(
+  az ad sp create-for-rbac \
+  --skip-assignment \
+  --name ${AKS}-sp 
+  --query password -o tsv)
+
+az aks create \
+    -g ${AKS_RG} \
+    -n ${AKS} \
+    --attach-acr $ACR \
+    --kubernetes-version ${K8S_VERSION} \
+    -l $RG_LOCATION \
+    --service-principal $(az ad sp show \
+        --id http://${AKS}-sp \
+        --query appId \
+        --output tsv) \
+    --client-secret $SP_PWD
+
+az aks get-credentials \
+    -g ${AKS_RG} \
+    -n ${AKS}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>A standard AKS cluster should now exist. Verify with:</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>kubectl get nodes
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="import-an-image-for-teleportation"><a href="#import-an-image-for-teleportation" class="header-anchor">#</a> Import an image for teleportation</h2> <p>For completeness of this walkthrough, the azure-vote application is used, which includes a 944mb <code>azure-vote-front:v1</code> image. To expand the layers, import the images into a teleport enabled registry, in the same region as the AKS cluster.</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>az acr import \
+  --source mcr.microsoft.com/azuredocs/azure-vote-front:v1 \
+  --name $ACR \
+  --image azure-vote-front:v1
+
+az acr import \
+  --source mcr.microsoft.com/oss/bitnami/redis:6.0.8 \
+  --name $ACR \
+  --image redis:6.0.8
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h2 id="confirm-import-and-teleport-expansion"><a href="#confirm-import-and-teleport-expansion" class="header-anchor">#</a> Confirm import and teleport expansion</h2> <p>Confirm the <code>azure-vote-front</code> repository is set for teleport expansion:</p> <div class="language-azurecli line-numbers-mode"><pre class="language-text"><code>az acr repository show \
+  --repository azure-vote-front \
+  -o jsonc
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>Look for <code>&quot;teleportEnabled&quot;: true,</code> in the output</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;changeableAttributes&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;deleteEnabled&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;listEnabled&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;readEnabled&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;teleportEnabled&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;writeEnabled&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>Although the repository is configured for teleport expansion, each image upload will take time to be expanded on push. The length of time is based on the quantity and size of layers, however the expansion should be completed within seconds.</p> <blockquote><p><strong>Note:</strong> ACR webhooks indicate when an artifact is pushed and available. A new webhook notification will be added at a future date to indicate the image has been expanded, and ready for teleportation.</p></blockquote> <p>At this point in the Teleport preview, check expansion using the <code>check-expansion.sh</code> script. As the script uses a <code>/mount</code> api, basic auth is required. An <a href="https://aka.ms/acr/tokens" target="_blank" rel="noopener noreferrer">ACR Token<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> is created and saved as environment variable.</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>export ACR_USER=teleport-token
+export ACR_PWD=$(az acr token create \
+  --name teleport-token \
+  --registry $ACR \
+  --repository azure-vote-front \
+  content/read \
+  --query credentials.passwords[0].value -o tsv)
+
+../check-expansion.sh teleport azure-vote-front v1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h2 id="add-nodes-for-teleporters-and-shuttles"><a href="#add-nodes-for-teleporters-and-shuttles" class="header-anchor">#</a> Add nodes for teleporters and shuttles</h2> <p>Two nodepools will be added to enable teleportation, and a comparison for standard transport. The system nodepool is avoided to enable clearing the image cache by scaling the nodepool to zero then back to one.</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>az aks nodepool add \
+  --resource-group $AKS_RG \
+  --cluster-name $AKS \
+  --name teleporter \
+  --node-count 1 \
+  --aks-custom-headers EnableACRTeleport=true \
+  --labels acr-teleport=enabled
+
+az aks nodepool add \
+  --resource-group $AKS_RG \
+  --cluster-name $AKS \
+  --name shuttle \
+  --node-count 1 \
+  --labels acr-teleport=disabled
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="deploy-to-aks"><a href="#deploy-to-aks" class="header-anchor">#</a> Deploy to AKS</h2> <p>Update the <code>azure-vote-teleport.yaml</code> and <code>azure-vote-shuttle.yaml</code> files to reference your registry name:</p> <div class="language-yml line-numbers-mode"><pre class="language-yml"><code><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token punctuation">...</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> azure<span class="token punctuation">-</span>vote<span class="token punctuation">-</span>back
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> &lt;registryName<span class="token punctuation">&gt;</span>.azurecr.io/redis<span class="token punctuation">:</span>6.0.8
+  <span class="token punctuation">...</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> azure<span class="token punctuation">-</span>vote<span class="token punctuation">-</span>front
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> &lt;registryName<span class="token punctuation">&gt;</span>.azurecr.io/azure<span class="token punctuation">-</span>vote<span class="token punctuation">-</span>front<span class="token punctuation">:</span>v1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="deploy-with-standard-pull-performance"><a href="#deploy-with-standard-pull-performance" class="header-anchor">#</a> Deploy with standard pull performance</h3> <p>Deploy the <em>shuttle</em> podspec:</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>kubectl apply -f azure-vote-shuttle.yaml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>Get the list of pods to find the azure-vote-front pod. The shorthand version can be used if only one pod is named <code>azure-vote-front</code>. You may need to run the command a few times until the image has been pulled and expanded on the node.</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>kubectl get pods
+kubectl describe pod azure-vote-front
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>Under the <code>events</code> list, an entry for <code>Successfully pulled image...</code> provides the pull time. Note the length before proceeding to the teleport version.</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  36s   default-scheduler  Successfully assigned default/azure-vote-front-5c976dbbd9-tckdz to aks-shuttle-10583637-vmss000000
+  Normal  Pulling    35s   kubelet            Pulling image <span class="token string">&quot;teleport.azurecr.io/azure-vote-front:v1&quot;</span>
+  Normal  Pulled     1s    kubelet            Successfully pulled image <span class="token string">&quot;teleport.azurecr.io/azure-vote-front:v1&quot;</span> <span class="token keyword">in</span> <span class="token number">34</span>.738162s
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>If <code>already present on machine</code> is returned, this indicates the image was previously pulled and cached. See <a href="#cleanup">recycle nodepool</a> to clear the cache.</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  2m12s  default-scheduler  Successfully assigned default/azure-vote-front-5bdfc85f9c-d7z8b to aks-shuttle-10583637-vmss000000
+  Normal  Pulled     2m11s  kubelet            Container image <span class="token string">&quot;teleport.azurecr.io/azure-vote-front:v1&quot;</span> already present on machine
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="deploy-with-teleport-performance"><a href="#deploy-with-teleport-performance" class="header-anchor">#</a> Deploy with Teleport performance</h3> <p>Deploy the <em>teleport</em> podspec:</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>kubectl apply -f azure-vote-teleport.yaml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>Get the list of pods to find the azure-vote-front pod. The shorthand version can be used if only one pod is named <code>azure-vote-front</code>. You may need to run the command a few times until the image has been pulled and expanded on the node.</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>kubectl describe pod azure-vote-front-teleport
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>Under the <code>events</code> list, an entry for <code>Successfully pulled image...</code> provides the pull time. Note the length should be dramatically faster.</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  12s   default-scheduler  Successfully assigned default/azure-vote-front-teleport-5bf865d976-lm4bj to aks-teleporter-10583637-vmss000000
+  Normal  Pulling    11s   kubelet            Pulling image <span class="token string">&quot;teleport.azurecr.io/azure-vote-front:v1&quot;</span>
+  Normal  Pulled     3s    kubelet            Successfully pulled image <span class="token string">&quot;teleport.azurecr.io/azure-vote-front:v1&quot;</span> <span class="token keyword">in</span> <span class="token number">8</span>.011045191s
+  Normal  Created    3s    kubelet            Created container azure-vote-front-teleport
+  Normal  Started    3s    kubelet            Started container azure-vote-front-teleport
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="cleanup"><a href="#cleanup" class="header-anchor">#</a> Cleanup</h3> <p>To reset the nodes, delete the two deployments:</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>kubectl delete -f azure-vote-teleport.yaml
+kubectl delete -f azure-vote-shuttle.yaml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>Clear the image cache, and any teleport mounts:</p> <div class="language-azurecli-interactive line-numbers-mode"><pre class="language-text"><code>az aks scale \
+  --resource-group $AKS_RG \
+  --name $AKS \
+  --nodepool-name teleporter \
+  --node-count 0
+
+az aks scale \
+  --resource-group $AKS_RG \
+  --name $AKS \
+  --nodepool-name shuttle \
+  --node-count 0
+
+az aks scale \
+  --resource-group $AKS_RG \
+  --name $AKS \
+  --nodepool-name teleporter \
+  --node-count 1
+
+az aks scale \
+  --resource-group $AKS_RG \
+  --name $AKS \
+  --nodepool-name shuttle \
+  --node-count 1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h2 id="performance-profile-of-teleport"><a href="#performance-profile-of-teleport" class="header-anchor">#</a> Performance profile of teleport</h2> <p>The Voting app has a significant performance delta, comparing a normal pull time of 34.7 seconds, with 8.0 seconds of teleport. While impressive, you may have assumed a larger difference.</p> <p>Teleport prototype-1 is based on mounting expanded layers. For each layer of an image, the decompression of a layer is traded off for a mount. Therefore, the larger the layer count, the slightly longer the start time.</p> <p>The <code>azure-vote-front</code> image has 29 layers, which requires 29 mounts. When pulling the image without teleport, the 944mb of content must be decompressed, but multiple decompression threads can run concurrently.</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>docker inspect teleport.azurecr.io/azure-vote-front:v1
+<span class="token punctuation">..</span>.
+<span class="token string">&quot;RootFS&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+  <span class="token string">&quot;Type&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;layers&quot;</span>,
+  <span class="token string">&quot;Layers&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&quot;sha256:e27a10675c5656bafb7bfa9e4631e871499af0a5ddfda3cebc0ac401dfe19382&quot;</span>,
+      <span class="token string">&quot;sha256:851f3e348c69d8959d326f0bab975c03f9813eec33aba389aa7c569953510433&quot;</span>,
+      <span class="token string">&quot;sha256:06f4de5fefeae30802d336e8c234b9c0989542fb80efd4f83be06c41aba26d9f&quot;</span>,
+      <span class="token string">&quot;sha256:b31411566900643c38169980a21093c23e0a12a12ffea78b1921d07dd40372bd&quot;</span>,
+      <span class="token string">&quot;sha256:6662dddae6aa455371366ed12400556a29e049373ea27c089a24634e3098cb48&quot;</span>,
+      <span class="token string">&quot;sha256:4ea12feed6a9386d7bdac8b26073b1209f0f39781a5d157026dfb5a918c95db7&quot;</span>,
+      <span class="token string">&quot;sha256:e7cee6196d865755606c73b82004784273cd423217cba8faf650b6707d3b5059&quot;</span>,
+      <span class="token string">&quot;sha256:b15d32f8b6aa975b8be84e825952094d2f20296777a2bb5fad3fb270ca05a776&quot;</span>,
+      <span class="token string">&quot;sha256:5e8efc7c6f4fee7fecfc685b742293a5300cc3180262a144a2fed54c46597129&quot;</span>,
+      <span class="token string">&quot;sha256:4f6e0a34a0535f5cd6b76d06aae861c3ced179b3b115d2850af0e2f0bcefeffc&quot;</span>,
+      <span class="token string">&quot;sha256:5ac43729c58be5ecb0fc13b164fb4f06f0afc13394735e8ac10cdb0f75311195&quot;</span>,
+      <span class="token string">&quot;sha256:491bd929c5bfcb0639a6c43d07be0aac225dc0da28379e99f617480599825e5f&quot;</span>,
+      <span class="token string">&quot;sha256:b18e79d2742360b7b0d81493e8a8beced51953c8a8f73fe4b228e47e8aeb292b&quot;</span>,
+      <span class="token string">&quot;sha256:55ebcfb2ad17cafdada768b6ca43e3f4e51bc589757b22337b94a499354aa052&quot;</span>,
+      <span class="token string">&quot;sha256:1a350e9420b7eac6b50172334afd6354d89749c62822951596bac9085cb9fb1e&quot;</span>,
+      <span class="token string">&quot;sha256:7b3929993879466a3abee028d3fb490d83c211ab5723e29765ed17c98db5b4e3&quot;</span>,
+      <span class="token string">&quot;sha256:ddeb470c209923815a410d35dd45a6710bc285955b5ef30d92a003d38bd68f3b&quot;</span>,
+      <span class="token string">&quot;sha256:c30da5f5d23cec0997d05337dd1113872ba56b38a59bf96922572f07d65b94a0&quot;</span>,
+      <span class="token string">&quot;sha256:a7364327f2826e4991e3675271350c9e7b858e33abbe77aacfbbff00a4b59455&quot;</span>,
+      <span class="token string">&quot;sha256:f8af872e501840a2de13260830960f612560d9ee755ae07a37c30758e8568444&quot;</span>,
+      <span class="token string">&quot;sha256:57fe04427c69233864b729d60d3c9c7fe8a43e950cb442a650101a357998c8c2&quot;</span>,
+      <span class="token string">&quot;sha256:cde1a4e95d8bea636972733fde8f223d1dda2c2425ec7de8ca5b078391723c11&quot;</span>,
+      <span class="token string">&quot;sha256:efa870440d9c6defc6447ad9d3d214312ba3dc0c665c723b793d14d241d811e1&quot;</span>,
+      <span class="token string">&quot;sha256:a9f64da753644ba8e18846cb23010c8e730de34701b5f519591167722a89784b&quot;</span>,
+      <span class="token string">&quot;sha256:2131d41261d2d13cae8b024c5a20e65fe8ee8f98d04bfd238124210b94115d69&quot;</span>,
+      <span class="token string">&quot;sha256:9d93163e41ffdad4659db82f267091b4a478f1235be1b25438407e79e80ed28b&quot;</span>,
+      <span class="token string">&quot;sha256:d9aeb057eef2070b1260cceeefb0933755f62504cf34efe2bf4f113043bf7493&quot;</span>,
+      <span class="token string">&quot;sha256:5e85a99d34e4a9aea5bdc845fb30587b172393ebf7d71ddbb1b325e3fa728090&quot;</span>,
+      <span class="token string">&quot;sha256:ab48c9fa73df063cfafaa0338c06ec44ba3d29a3ce6adde3fedf42d2d0c0ee91&quot;</span>
+  <span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><p>While you might consider flattening your images to one layer for fast mounting, while that would help, you may have contention on a single mount point. The purpose of the Teleport preview is to get further metrics on the usage to understand the art and science of image layers. The Teleport design does not require an image owner to make changes to use Teleport. Teleport works with your existing container images. However, with each technology, there are always optimizations that may be made based on the deployment target.</p> <p>One thing is always common about image performance. The smaller you can make your overall container image, the faster it will run.</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/azure/acr/edit/master/docs/teleport/aks-getting-started.md" target="_blank" rel="noopener noreferrer">Edit this page on GitHub</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/acr/assets/js/app.09ed2a84.js" defer></script><script src="/acr/assets/js/2.f86faad7.js" defer></script><script src="/acr/assets/js/49.7f6d7795.js" defer></script>
+  </body>
+</html>
